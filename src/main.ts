@@ -1,4 +1,7 @@
 import "./style.css";
+
+const theDiv = document.getElementById("app");
+
 // Alternativen
 const choices = ["Sten", "Sax", "Påse"];
 
@@ -19,7 +22,7 @@ console.log("Spelaren valde:", playerChoice);
 console.log("Datorn valde:", computerChoice);
 
 // Bestäm vinnaren
-function determineWinner(player, computer) {
+function determineWinner(player: string, computer: string) {
   if (player === computer) {
     return "Oavgjort!";
   } else if (
@@ -34,5 +37,16 @@ function determineWinner(player, computer) {
 }
 
 // Visa resultatet
-const result = determineWinner(playerChoice, computerChoice);
-console.log(result);
+if (playerChoice) {
+  const result = determineWinner(playerChoice, computerChoice);
+
+  function createHtmlWinner() {
+    const myh2 = document.createElement("h1");
+    myh2.innerHTML = result;
+    if (theDiv) {
+      theDiv.appendChild(myh2);
+    }
+  }
+
+  createHtmlWinner();
+}
