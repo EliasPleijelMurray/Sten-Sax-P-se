@@ -1,1 +1,38 @@
 import "./style.css";
+// Alternativen
+const choices = ["Sten", "Sax", "Påse"];
+
+// Datorns val
+function getComputerChoice() {
+  const randomIndex = Math.floor(Math.random() * choices.length);
+  return choices[randomIndex];
+}
+
+// Spelarens val
+const playerChoice = prompt("Välj: Sten, Sax eller Påse");
+
+// Hämta datorns val
+const computerChoice = getComputerChoice();
+
+// Visa val
+console.log("Spelaren valde:", playerChoice);
+console.log("Datorn valde:", computerChoice);
+
+// Bestäm vinnaren
+function determineWinner(player, computer) {
+  if (player === computer) {
+    return "Oavgjort!";
+  } else if (
+    (player === "Sten" && computer === "Sax") ||
+    (player === "Sax" && computer === "Påse") ||
+    (player === "Påse" && computer === "Sten")
+  ) {
+    return "Du vinner!";
+  } else {
+    return "Datorn vinner!";
+  }
+}
+
+// Visa resultatet
+const result = determineWinner(playerChoice, computerChoice);
+console.log(result);
