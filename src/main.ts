@@ -67,4 +67,4 @@ buttonContainer?.appendChild(rockIcon);
 buttonContainer?.appendChild(scissorsIcon);
 buttonContainer.appendChild(paperIcon);
 
-app?.appendChild(buttonContainer)
+app?.appendChild(buttonContainer);
