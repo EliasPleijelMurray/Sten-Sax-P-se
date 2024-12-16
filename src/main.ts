@@ -1,28 +1,38 @@
 import "./style.css";
+import "@fortawesome/fontawesome-free/css/all.css";
 
 const theDiv = document.getElementById("app");
+
+// Skapa sektion för knappar
+const app = document.getElementById("app");
+const buttonContainer = document.createElement("section");
+buttonContainer.className = "buttonContainer";
+
+// Skapa ikoner för val
+const rockIcon = document.createElement("i");
+rockIcon.className = "fa-regular fa-hand-back-fist";
+const paperIcon = document.createElement("i");
+paperIcon.className = "fa-regular fa-hand";
+const scissorsIcon = document.createElement("i");
+scissorsIcon.className = "fa-regular fa-hand-scissors";
+
+buttonContainer.appendChild(rockIcon);
+buttonContainer.appendChild(scissorsIcon);
+buttonContainer.appendChild(paperIcon);
+
+app?.appendChild(buttonContainer);
 
 // Alternativen
 const choices = ["Sten", "Sax", "Påse"];
 
-// Datorns val
+// Funktion för datorns val
 function getComputerChoice() {
   const randomIndex = Math.floor(Math.random() * choices.length);
   return choices[randomIndex];
 }
 
-// Spelarens val
-const playerChoice = prompt("Välj: Sten, Sax eller Påse");
-
-// Hämta datorns val
-const computerChoice = getComputerChoice();
-
-// Visa val
-console.log("Spelaren valde:", playerChoice);
-console.log("Datorn valde:", computerChoice);
-
-// Bestäm vinnaren
-function determineWinner(player: string, computer: string) {
+// Funktion för att bestämma vinnaren
+function determineWinner(player: string, computer: string): string {
   if (player === computer) {
     return "Oavgjort!";
   } else if (
@@ -36,35 +46,41 @@ function determineWinner(player: string, computer: string) {
   }
 }
 
-// Visa resultatet
-if (playerChoice) {
-  const result = determineWinner(playerChoice, computerChoice);
-
-  function createHtmlWinner() {
-    const myh2 = document.createElement("h1");
-    myh2.innerHTML = result;
-    if (theDiv) {
-      theDiv.appendChild(myh2);
-    }
+// Funktion för att visa resultatet i HTML
+function createHtmlWinner(result: string) {
+  // Rensa tidigare resultat
+  const existingResult = document.querySelector("h1");
+  if (existingResult) {
+    existingResult.remove();
   }
 
-  createHtmlWinner();
+  const resultElement = document.createElement("h1");
+  resultElement.innerHTML = result;
+  theDiv?.appendChild(resultElement);
 }
-import "@fortawesome/fontawesome-free/css/all.css";
 
-const app = document.getElementById("app");
-const buttonContainer = document.createElement("section")
-buttonContainer.className="buttonContainer"
+// Klickhändelser för spelval
+rockIcon.addEventListener("click", () => {
+  const playerChoice = "Sten";
+  const computerChoice = getComputerChoice();
+  const result = determineWinner(playerChoice, computerChoice);
+  createHtmlWinner(result);
+});
 
-const rockIcon = document.createElement("i")
-rockIcon.className ="fa-regular fa-hand-back-fist"
-const paperIcon = document.createElement("i")
-paperIcon.className ="fa-regular fa-hand"
-const scissorsIcon = document.createElement("i")
-scissorsIcon.className = "fa-regular fa-hand-scissors"
+scissorsIcon.addEventListener("click", () => {
+  const playerChoice = "Sax";
+  const computerChoice = getComputerChoice();
+  const result = determineWinner(playerChoice, computerChoice);
+  createHtmlWinner(result);
+});
 
-buttonContainer?.appendChild(rockIcon);
-buttonContainer?.appendChild(scissorsIcon);
-buttonContainer.appendChild(paperIcon);
-
+<<<<<<< HEAD
 app?.appendChild(buttonContainer);
+=======
+paperIcon.addEventListener("click", () => {
+  const playerChoice = "Påse";
+  const computerChoice = getComputerChoice();
+  const result = determineWinner(playerChoice, computerChoice);
+  createHtmlWinner(result);
+});
+>>>>>>> 82fe8bebee13c3a5e534f71f247686efeb36026d
