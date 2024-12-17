@@ -5,16 +5,17 @@ import "@fortawesome/fontawesome-free/css/all.css";
 const theDiv = document.getElementById("app");
 
 //Spelinstruktioner
-const instructionsContainer = document.createElement("section")
-instructionsContainer.className="instructionsContainer"
-theDiv?.appendChild(instructionsContainer)
+const instructionsContainer = document.createElement("section");
+instructionsContainer.className = "instructionsContainer";
+theDiv?.appendChild(instructionsContainer);
 
-const instructionsHead = document.createElement("h3")
-const instructionsText= document.createElement("p")
-instructionsHead.innerHTML="Så spelar du"
-instructionsText.innerHTML="Försök att slå datorn! Klicka på ikonerna för att välja sten, sax eller påse"
-instructionsContainer.appendChild(instructionsHead)
-instructionsContainer.appendChild(instructionsText)
+const instructionsHead = document.createElement("h3");
+const instructionsText = document.createElement("p");
+instructionsHead.innerHTML = "Så spelar du";
+instructionsText.innerHTML =
+  "Försök att slå datorn! Klicka på ikonerna för att välja sten, sax eller påse";
+instructionsContainer.appendChild(instructionsHead);
+instructionsContainer.appendChild(instructionsText);
 
 // Skapa sektion för knappar
 const app = document.getElementById("app");
@@ -44,17 +45,39 @@ function getComputerChoice() {
   return choices[randomIndex];
 }
 
+let computerScore = 0;
+let playerScore = 0;
+let drawScore = 0;
+
+const scoreP = document.createElement("p");
+scoreP.className = "scoreP";
+const scorePComputer = document.createElement("p");
+scorePComputer.className = "scoreP";
+const drawP = document.createElement("p");
+drawP.className = "scoreP";
+
 // Funktion för att bestämma vinnaren
 function determineWinner(player: string, computer: string): string {
   if (player === computer) {
+    drawScore++;
+    drawP.innerHTML =
+      "Det har blivit oavgjort: " + drawScore.toString() + " gånger";
+    theDiv?.appendChild(drawP);
     return "Oavgjort!";
   } else if (
     (player === "Sten" && computer === "Sax") ||
     (player === "Sax" && computer === "Påse") ||
     (player === "Påse" && computer === "Sten")
   ) {
-    return "Du vann!"
+    playerScore++;
+    scoreP.innerHTML = "Du har vunnit: " + playerScore.toString() + " gånger";
+    theDiv?.appendChild(scoreP);
+    return "Du vann!";
   } else {
+    computerScore++;
+    scorePComputer.innerHTML =
+      "Datorn har vunnit: " + computerScore.toString() + " gånger";
+    theDiv?.appendChild(scorePComputer);
     return "Datorn vann!";
   }
 }
