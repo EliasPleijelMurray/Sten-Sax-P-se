@@ -1,5 +1,23 @@
+body{
+  background-color: rgb(252, 252, 221);
+}
+
+.instructionsContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+  row-gap: 0px;
+}
+
+h3{
+  text-decoration: underline;
+}
+
 .buttonContainer {
-  height: 50vh;
+  height: 40vh;
+  row-gap: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,4 +26,21 @@
   color:orange;
 }
 
+.result-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 
+.youWin{
+  color: green;
+}
+
+.computerWins{
+  color: red;
+}
+
+.draw{
+  color: rgb(255, 225, 0);
+}
