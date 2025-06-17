@@ -1,0 +1,105 @@
+body {
+  background: linear-gradient(120deg, #f3f4f6 0%, #c7d2fe 100%);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.instructionsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+h1 {
+  text-align: center;
+  color: #4f46e5;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+h3 {
+  text-decoration: underline;
+  font-size: 2rem;
+}
+
+.buttonContainer {
+  height: 40vh;
+  row-gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 50px;
+  color: orange;
+}
+
+button {
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  font-size: 2rem;
+  margin: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.12);
+}
+
+button:hover {
+  background: #818cf8;
+  transform: scale(1.08);
+}
+
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#result {
+  text-align: center;
+  font-size: 1.3rem;
+  color: #334155;
+  margin: 1.5rem 0 0.5rem 0;
+  min-height: 2.5rem;
+}
+
+#score {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+
+#score span {
+  background: #e0e7ff;
+  border-radius: 8px;
+  padding: 0.5rem 1.2rem;
+  font-weight: bold;
+  color: #3730a3;
+}
+
+.youWin {
+  color: green;
+}
+
+.computerWins {
+  color: red;
+}
+
+.draw {
+  color: rgb(197, 175, 8);
+}
+
+.scoreP {
+  text-align: center;
+}
